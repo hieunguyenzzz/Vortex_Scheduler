@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::system">
+                    <resource id="Vortex_Scheduler::vortex_scheduler_cronjobs" title="Cronjobs">
+                        <resource id="Vortex_Scheduler::vortex_scheduler_cronjobs_job" title="Job Configuration" sortOrder="10"/>
+                        <resource id="Vortex_Scheduler::vortex_scheduler_cronjobs_listview" title="List View Scheduled" sortOrder="20"/>
+                        <resource id="Vortex_Scheduler::vortex_scheduler_cronjobs_timeline" title="View Cronjob Timeline" sortOrder="30" />
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Vortex_Scheduler::vortex_scheduler_cronjobs" title="Cronjobs" module="Vortex_Scheduler" sortOrder="50" parent="Magento_Backend::system" resource="Vortex_Scheduler::view"/>
+
+        <add id="Vortex_Scheduler::vortex_scheduler_cronjobs_job" title="Job Configuration" module="Vortex_Scheduler" sortOrder="60" parent="Vortex_Scheduler::vortex_scheduler_cronjobs" resource="Vortex_Scheduler::view" action="scheduler/job/Index"/>
+        <add id="Vortex_Scheduler::vortex_scheduler_cronjobs_listview" title="List View Scheduled" module="Vortex_Scheduler" sortOrder="70" parent="Vortex_Scheduler::vortex_scheduler_cronjobs" resource="Vortex_Scheduler::view" action="scheduler/listview/Index"/>
+        <add id="Vortex_Scheduler::vortex_scheduler_cronjobs_timeline" title="View Cronjob Timeline" module="Vortex_Scheduler" sortOrder="70" parent="Vortex_Scheduler::vortex_scheduler_cronjobs" resource="Vortex_Scheduler::view" action="scheduler/timeline/Index"/>
+
+    </menu>
+</config>

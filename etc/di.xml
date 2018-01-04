@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2017 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <preference for="Magento\Cron\Model\Schedule" type="Vortex\Scheduler\Model\Schedule" />
+    <preference for="Magento\Cron\Model\Config\Converter\Db" type="Vortex\Scheduler\Model\Config\Converter\Db" />
+    <preference for="Magento\Cron\Model\Config" type="Vortex\Scheduler\Model\Config" />
+
+
+    <virtualType name="Vortex\Scheduler\Model\ResourceModel\Job\ResultCollection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="resourceModel" xsi:type="string">Vortex\Scheduler\Model\ResourceModel\Job</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="JobGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="JobGridDataProvider" type="Vortex\Scheduler\Ui\Component\DataProvider\Job\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Vortex\Scheduler\Model\ResourceModel\Job\ResultCollection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">JobGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="job_listing_data_source" xsi:type="string">Vortex\Scheduler\Model\ResourceModel\Job\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="vortexScheduler" xsi:type="object">Vortex\Scheduler\Console\Command\Scheduler</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
